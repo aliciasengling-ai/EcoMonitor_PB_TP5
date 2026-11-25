@@ -6,3 +6,6 @@ wordcloud>=1.9,<2
 fastapi
 uvicorn
 pydantic
+transformers
+torch
+sentencepiece

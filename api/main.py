@@ -74,3 +74,61 @@ def adicionar_dados(dados: DadosClimaticos):
         "mensagem": "Dados adicionados com sucesso",
         "dados": dados
     }
+# TP4 - Integracao com inteligencia artificial
+
+from pydantic import BaseModel, Field
+from fastapi import HTTPException
+from api.llm import carregar_modelo, processar_texto
+
+
+class EntradaTexto(BaseModel):
+    texto: str = Field(min_length=10, max_length=2000)
+
+
+class RespostaTexto(BaseModel):
+    texto_original: str
+    tipo_analise: str
+    resultado: str
+    modelo: str
+    status: str
+
+
+@app.post(
+    "/processar_texto",
+    response_model=RespostaTexto
+)
+def analisar_texto(entrada: EntradaTexto):
+
+    texto = entrada.texto.strip()
+
+    if len(texto) < 10:
+        raise HTTPException(
+            status_code=400,
+            detail="Informe um texto com pelo menos 10 caracteres."
+        )
+
+    try:
+        carregar_modelo()
+
+    except Exception:
+        raise HTTPException(
+            status_code=503,
+            detail="Modelo de IA local indisponivel."
+        )
+
+    try:
+        resultado = processar_texto(texto)
+
+        return RespostaTexto(
+            texto_original=texto,
+            tipo_analise="Resumo automatico",
+            resultado=resultado,
+            modelo="google/flan-t5-small",
+            status="sucesso"
+        )
+
+    except Exception:
+        raise HTTPException(
+            status_code=500,
+            detail="Erro ao processar o texto."
+        )
