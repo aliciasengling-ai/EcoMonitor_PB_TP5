@@ -1,48 +1,54 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="EcoMonitor Brasil - TP3",
+    page_title="EcoMonitor Brasil - TP5",
     page_icon="🌱",
     layout="wide"
 )
 
 st.title("🌱 EcoMonitor Brasil")
+st.subheader("Ciência de Dados, Sustentabilidade e IA")
 
-st.subheader("Monitoramento ambiental e sustentabilidade")
+st.header("Sobre o projeto")
 
-st.markdown("""
-### Sobre o projeto
+st.write("""
+O EcoMonitor Brasil é uma aplicação de monitoramento
+ambiental alinhada às práticas ESG e aos Objetivos de
+Desenvolvimento Sustentável da Agenda 2030.
 
-O EcoMonitor Brasil é uma aplicação voltada
-ao monitoramento de indicadores climáticos,
-sustentabilidade e Agenda 2030.
-
-Nesta terceira etapa, o projeto foi ampliado
-com múltiplas páginas e integração com FastAPI.
-
-### Funcionalidades
-
-- Consulta de dados climáticos.
-- Visualização de indicadores ambientais.
-- Coleta de conteúdo sobre sustentabilidade.
-- Upload e download de arquivos CSV.
-- Consulta e envio de dados via FastAPI.
-- Preparação para futura integração com LLMs.
-
-### Navegação
-
-Utilize o menu lateral para acessar as
-funcionalidades disponíveis.
+Na etapa final, o projeto integra coleta, processamento,
+visualização de dados e inteligência artificial local.
 """)
 
-st.divider()
+st.header("Funcionalidades")
 
-st.info(
-    "Projeto acadêmico — EcoMonitor Brasil | PB TP3"
-)
+st.markdown("""
+- Consulta de dados climáticos.
+- Coleta de conteúdo ambiental.
+- Visualização de indicadores.
+- Upload e download de arquivos CSV.
+- Integração com FastAPI.
+- Engenharia de prompts.
+- Sumarização automática com FLAN-T5 Small.
+- Dashboard final interativo.
+""")
 
-st.markdown(
-    "[Agenda 2030](https://brasil.un.org/pt-br/sdgs)"
-    " | "
-    "[Open-Meteo](https://open-meteo.com/)"
-)
+st.header("Inteligência Artificial")
+
+st.write("""
+A solução utiliza um modelo de linguagem local para
+resumir textos ambientais e facilitar a compreensão
+de informações relacionadas à sustentabilidade.
+""")
+
+st.header("ODS e ESG")
+
+st.markdown("""
+- ODS 11: Cidades e comunidades sustentáveis.
+- ODS 12: Consumo e produção responsáveis.
+- ODS 13: Ação contra a mudança global do clima.
+""")
+
+st.info("Utilize o menu lateral para navegar pela aplicação.")
+
+st.success("EcoMonitor Brasil - Projeto Final TP5")
